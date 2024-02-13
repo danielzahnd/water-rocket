@@ -237,7 +237,7 @@ h_{max}(m_w,P_0) &= \sqrt{\frac{P_0}{\rho_w}}\ln\left(\frac{m_f+m_w}{m_f}\right)
 \end{aligned}\end{align} By using multidimensional calculus, one could now in principle optimize $h_{max}(m_w,P_0)$ with respect to the two parameters $m_w$ and $P_0$.
 
 \subsection{Actual calculations and results}
-In order to do actual calculations for the rocket velocity $v(t)$ and the rocket height $h(t)$, the propellant ejection time $\tau$, the propellant ejection  velocity $v_p$ and the mass ejection parameter $b$ have to be known. Given the assumptions, that the propellant ejection be constant over the whole period of ejection and that furthermore the pressure inside the tank ejecting the propellant can be approximated by the average pressure over the ejection time, these quantities can be calculated by \cref{eq:propellantejectiontime}, \cref{eq:propellantejectionvelocity} and \cref{eq:freeparameters}. The results as shown in this subsection were obtained\footnote{The code which produces the results as shown here is found at \url{https://github.com/danielzahnd/water-rocket/blob/main/code/water_rocket_no_air_resistance.ipynb}.} for a pressure $P_0 = \SI{8}{\bar}$, a typical half-liter PET plastic bottle size, an exhaust radius of $r = \SI{4.5}{\milli\meter}$ and a propellant mass of $m_w = \SI{0.25}{\kilo\gram}$.
+In order to do actual calculations for the rocket velocity $v(t)$ and the rocket height $h(t)$, the propellant ejection time $\tau$, the propellant ejection  velocity $v_p$ and the mass ejection parameter $b$ have to be known. Given the assumptions, that the propellant ejection be constant over the whole period of ejection and that furthermore the pressure inside the tank ejecting the propellant can be approximated by the average pressure over the ejection time, these quantities can be calculated by \cref{eq:propellantejectiontime}, \cref{eq:propellantejectionvelocity} and \cref{eq:freeparameters}. The results as shown in this subsection were obtained\footnote{The code which produces the results as shown here is found at \url{https://github.com/danielzahnd/water-rocket/blob/main/code/water_rocket_no_air_resistance.ipynb}.} for a pressure $P_0 = \SI{8}{\bar}$, a typical half-liter PET plastic bottle of mass $m_r \approx \SI{40}{\gram}$, an exhaust radius of $r = \SI{4.5}{\milli\meter}$ and a propellant mass of $m_w = \SI{0.25}{\kilo\gram}$. The cross-sectional radius of the plastic bottle is $R \approx \SI{3.25}{\centi\meter}$.
 \begin{figure}[h]
 	\begin{subfigure}{0.49\textwidth}
 		\centering
@@ -255,7 +255,7 @@ In order to do actual calculations for the rocket velocity $v(t)$ and the rocket
 	\label{fig:results1_without_drag}
 \end{figure}
 
-As one can see from \cref{fig:h(t)_without_drag}, the maximal height achieved in the case of no drag forces acting upon the water rocket as it propagates through the air is roughly $\SI{155}{\meter}$ at time of roughly $\SI{6}{\second}$ after the start. Given real-life experiments using the mentioned parameters, one can interpret this result as not realistic, mainly because the water rocket is never observed to ascend to such heights as it would be predicted by a calculation without consideration of drag forces. The velocity curve $v(t)$ as shown \cref{fig:v(t)_without_drag} seems however to provide realistic estimates at least for the maximal velocity, which is around $\SI{55}{\meter\per\second}$ after approximately $\SI{140}{\milli\second}$ posterior to the start. Still, this would mean that the maximal velocity of the water rocket would be around $\SI{165}{\kilo\meter\per\hour}$; a velocity which water rockets in practical tests do not seem to achieve. It is however to be remembered, that the rocket does only travel at this maximal speed for a very short time, which could simply be too short to be observed consciously by eye of a human observer.
+As one can see from \cref{fig:h(t)_without_drag}, the maximal height achieved in the case of no drag forces acting upon the water rocket as it propagates through the air is roughly $\SI{155}{\meter}$ at time of roughly $\SI{6}{\second}$ after the start. Given real-life experiments using the mentioned parameters, one can interpret this result as not realistic, mainly because the water rocket is never observed to ascend to such heights as it would be predicted by a calculation without consideration of drag forces. The velocity curve $v(t)$ as shown \cref{fig:v(t)_without_drag} seems however to provide realistic estimates at least for the maximal velocity, which is around $\SI{55}{\meter\per\second}$ after approximately $\SI{140}{\milli\second}$ posterior to the start. Still, this would mean that the maximal velocity of the water rocket would be around $\SI{197}{\kilo\meter\per\hour}$; a velocity which water rockets in practical tests do not seem to achieve. It is however to be remembered, that the rocket does only travel at this maximal speed for a very short time, which could simply be too short to be observed consciously by eye of a human observer.
 
 In conclusion nonetheless, the results for solving the rocket equation for a water rocket not experiencing drag forces seem to be exceedingly optimistic, such that they do not seem to give an appropriate description of the realistic behaviour of a water rocket in terms of achieved height $h(t)$ or velocity $v(t)$. The reason why drag forces are comparatively very important for water rockets is that their mass is very low compared to their size. A real rocket however has a lot more mass per cross-sectional area. For a water rocket therefore, it is paramount to solve the rocket equation under a proper consideration of drag forces.
 
@@ -307,7 +307,7 @@ The fourth-order Runge-Kutta scheme now gives the iterations $t_i \rightarrow t_
 \end{align} The three expressions \cref{eq:reqdrag_rungekutta_1}, \cref{eq:reqdrag_rungekutta_2} and \cref{eq:reqdrag_rungekutta_3} hence define the equations to implement in an algorithm intended to solve the rocket equation \cref{eq:rocketeqwithdragtointegrate} with drag forces for the velocity $v(t)$ and the height $h(t)$ in a desired time window.
 
 \subsection{Actual calculations and results}
-In order to do actual calculations for the rocket velocity $v(t)$ and the rocket height $h(t)$ in the case of a rocket experiencing drag forces, the propellant ejection time $\tau$, the propellant ejection  velocity $v_p$ and the mass ejection parameter $b$ have to be known as in the case of a rocket with negligible drag forces acting upon it. Given the assumptions, that the propellant ejection be constant over the whole period of ejection and that furthermore the pressure inside the tank ejecting the propellant can be approximated by the average pressure over the ejection time, these quantities can be calculated by \cref{eq:propellantejectiontime}, \cref{eq:propellantejectionvelocity} and \cref{eq:freeparameters}. The results as shown in this subsection were obtained\footnote{The code which produces the results as shown here is found at \url{https://github.com/danielzahnd/water-rocket/blob/main/code/water_rocket_air_resistance.ipynb}.} for a pressure $P_0 = \SI{8}{\bar}$, a typical half-liter PET plastic bottle size, an exhaust radius of $r = \SI{4.5}{\milli\meter}$ and a propellant mass of $m_w = \SI{0.25}{\kilo\gram}$.
+In order to do actual calculations for the rocket velocity $v(t)$ and the rocket height $h(t)$ in the case of a rocket experiencing drag forces, the propellant ejection time $\tau$, the propellant ejection  velocity $v_p$ and the mass ejection parameter $b$ have to be known as in the case of a rocket with negligible drag forces acting upon it. Given the assumptions, that the propellant ejection be constant over the whole period of ejection and that furthermore the pressure inside the tank ejecting the propellant can be approximated by the average pressure over the ejection time, these quantities can be calculated by \cref{eq:propellantejectiontime}, \cref{eq:propellantejectionvelocity} and \cref{eq:freeparameters}. The results as shown in this subsection were obtained\footnote{The code which produces the results as shown here is found at \url{https://github.com/danielzahnd/water-rocket/blob/main/code/water_rocket_air_resistance.ipynb}.} for a pressure $P_0 = \SI{8}{\bar}$, a typical half-liter PET plastic bottle of mass $m_r \approx \SI{40}{\gram}$, an exhaust radius of $r = \SI{4.5}{\milli\meter}$ and a propellant mass of $m_w = \SI{0.25}{\kilo\gram}$. The cross-sectional radius of the plastic bottle is $R \approx \SI{3.25}{\centi\meter}$.
 \begin{figure}[h]
 	\begin{subfigure}{0.49\textwidth}
 		\centering
@@ -325,10 +325,15 @@ In order to do actual calculations for the rocket velocity $v(t)$ and the rocket
 	\label{fig:results1_with_drag}
 \end{figure}
 
-\textbf{Discuss results.}
+First of all, the acceleration phase as seen in \cref{fig:v(t)_with_drag} seems to be almost equal to the case without drag forces, as the $t(v_{max})$ values for both cases are roughly equal to one another. Also the values for the maximal velocities are similar for both cases. However, the case taking into account drag forces renders the more realistic value of roughly $v_{max} \approx \SI{52}{\meter\per\second} \approx \SI{189}{\meter\per\second}$. In practical experiments however, this velocity still does not seem to be achieved. But one has to note here, that the phase during which the water rockets would travel at that velocity is very short, such that it is likely almost unperceivable by the human eye.
 
-\chapter{Derivations}
-\section{Derivation of the Bernoulli equation}
+As for the height results, we seem to obtain realistic results. The total time for the rocket to reach maximal height with roughly two seconds seems to correspond well to practical experiments, at least a lot better than the value of roughly six seconds as for the case without drag forces. Also the predicted maximal height of roughly 28 meters is very realistic, given observations in field experiments. This is not really surprising, since it was already established that a consideration of drag forces is paramount to calculations for a water rocket. An explanation for this is found by examining \cref{eq:rocketeqwithdragtointegrate}. Hereby, the term accounting for drag forces is proportional to the ratio $A/m(t)$. Hence, if this ratio is large, drag forces are dominant, whereas they are negligible if $A/m(t) \ll 1$. For real rockets, the $A/m(t) \ll 1$ holds, whereas for water rockets it is given\footnote{Hereby, the values $m_r \approx \SI{0.04}{\kilogram}$ and $A = R^2\pi$ with $R \approx \SI{3.25}{\centi\meter}$ were used for an estimation of the cross-sectional area to mass ratio.} by $A/m_r \approx \SI{0.08}{\meter^2\kilogram^{-1}}$. A corresponding calculation for the unfuelled starship rocket of SpaceX yields $A/m_r \approx \SI{0.0002}{\meter^2/\kilogram^{-1}}$ and is therefore roughly 400 times smaller than for the water rocket. This is why drag forces are largely negligible in the latter case, but not for water rockets due to their large cross-sectional area to mass ratio.
+
+In conclusion, the calculations as found in this section considering drag forces seem to give realistic estim
+ates for the real-world case as observed in field experiments. Using the code and the equations, one can experiment with different propellant masses $m_w$ and start pressure values $P_0$ needed to obtain maximal height.
+
+\appendix
+\chapter{Derivation of the Bernoulli equation}
 Consider a fluid flowing in a pipe as shown in \cref{fig:bernoulliderivation}; furthermore let $\Delta V$ with mass $\Delta m = \rho\Delta V$ denote a small fluid portion moving along a streamline from the right to the left, where $\rho$ is the constant fluid density. The total work done on/by the fluid portion  $W_{tot}$ is given by \begin{equation}
 W_{tot} = \Delta E_{kin} + \Delta E_{pot}.
 \end{equation}
@@ -351,7 +356,7 @@ W_{tot} = W_1 + W_2 = \Delta E_{kin} + \Delta E_{pot} = (|\vect{P}_1|-|\vect{P}_
 |\vect{P}(\vect{x},t)| + \rho g h(\vect{x},t)+ \frac{1}{2}\rho \vect{v}(\vect{x},t)^2 = \text{const.}
 \end{equation} indicating, that pressure, velocity and height of a fluid element sum to a constant value in the specified combination at all times and places along a streamline.
 
-\section{Derivation of the drag equation}
+\chapter{Derivation of the drag equation}
 Consider a fluid of constant density $\rho$ flowing horizontally around a massive object, as seen in \cref{fig:dragequationderivation}.
 \begin{figure}[h]
 \centering
@@ -367,15 +372,14 @@ F = A \Delta P = \frac{1}{2}\rho A \vect{v}^2.
 \vect{F}_d(\vect{x},t) = - \frac{1}{2}\rho(\vect{x})C_d A \frac{\vect{v}(t)^3}{|\vect{v}(t)|},
 \end{equation} where $C_d$ is a scaling factor to be experimentally determined related to the geometry of the object under consideration. Drag coefficients for different object geometries can be taken from \cref{fig:dragcoefficients}.
 
-\section{Derivation of the rocket equation}
+\chapter{Derivation of the rocket equation}
+Consider a situation, where one has rocket of mass $m(t)$ ascending in positive vertical direction $\vect{e}_z$, where the speed of the rocket is denoted by $\vect{v}(t)$ and the propellant is ejected with velocity $\vect{v}_p(t)$ in negative vertical direction, that is $-\vect{e}_z$. This situation is shown in \cref{fig:rocketequation}, where $\vect{F}_p$ denotes the force generated by the propellant ejection, $\vect{F}_g$ is the force due to gravity, $\vect{F}_d$ is the drag force the rocket experiences and $\vect{F}$ is the net force acting upon the rocket. 
 \begin{figure}[h]
-\centering
-\includegraphics[width=4cm]{figures/rocketequationderivation.pdf}
-\caption{Sketch for the derivation of the general rocket equation considering drag force $\vect{F}_d$, gravitational force $\vect{F}_g$, propellant force $\vect{F}_p$ and a net force $\vect{F}$.}
-\label{fig:rocketequation}
-\end{figure}
-
-Consider a situation, where one has rocket of mass $m(t)$ ascending in positive vertical direction $\vect{e}_z$, where the speed of the rocket is denoted by $\vect{v}(t)$ and the propellant is ejected with velocity $\vect{v}_p(t)$ in negative vertical direction, that is $-\vect{e}_z$. This situation is shown in \cref{fig:rocketequation}, where $\vect{F}_p$ denotes the force generated by the propellant ejection, $\vect{F}_g$ is the force due to gravity, $\vect{F}_d$ is the drag force the rocket experiences and $\vect{F}$ is the net force acting upon the rocket. In general, all of these forces are time-dependent. First of all, the force due to the propellant ejection can be accounted for by \begin{equation}
+	\centering
+	\includegraphics[width=4cm]{figures/rocketequationderivation.pdf}
+	\caption{Sketch for the derivation of the general rocket equation considering drag force $\vect{F}_d$, gravitational force $\vect{F}_g$, propellant force $\vect{F}_p$ and a net force $\vect{F}$.}
+	\label{fig:rocketequation}
+\end{figure} In general, all of these forces are time-dependent. First of all, the force due to the propellant ejection can be accounted for by \begin{equation}
 \vect{F}_p(t) = \vect{v}_p(t)\frac{\mathrm{d}m(t)}{\mathrm{d}t}\theta(\tau-t),
 \end{equation} where $\theta: \mathbb{R}\rightarrow \{0,1\}$ is the Heaviside function, $\tau$ is the total time of propellant ejection and $\vect{v}_p(t)$ is the in general time-dependent ejection velocity of the propellant, which is oriented towards the negative vertical axis; that is to say, against the movement direction of the rocket. Furthermore, the force due to gravity is given as \begin{equation}
 \vect{F}_g(t) = -m(t)g\vect{e}_z,
@@ -391,7 +395,7 @@ From \cref{fig:rocketequation} it can be derived, that the net force $\vect{F}(t
 m(t)\frac{\mathrm{d}\vect{v}(t)}{\mathrm{d}t} = \frac{\mathrm{d}m(t)}{\mathrm{d}t}\vect{v}_p(t)\theta(\tau-t) - \frac{1}{2}\rho(\vect{x})\vect{v}(t)^2\bar{C}_dA\vect{e}_z - m(t)g\vect{e}_z.
 \end{equation}
 
-\section{Derivation of the Runge-Kutta scheme}\label{sec:derivrungekutta}
+\chapter{Derivation of the Runge-Kutta scheme}\label{sec:derivrungekutta}
 The derivation of the fourth-order Runge-Kutta integration scheme is a lengthy task, which is in principle not complicated, but tedious; therefore only the key steps are outlined here.
 
 The fourth-order Runge-Kutta scheme solves a differential equation of the form \begin{equation}
